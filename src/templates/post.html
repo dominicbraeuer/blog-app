@@ -1,0 +1,6 @@
+{% extends "_baseLayout.html" %}
+{% set bannerImage = blogPost.image %}
+{% set isPost = true %}
+{% block post %}
+  {{ blogPost.content | safe }}
+{% endblock %}

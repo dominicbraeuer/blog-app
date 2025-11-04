@@ -1,0 +1,28 @@
+{% macro header(pageTitle, subheading, bannerImage, isPost, blogPost) %}
+  <!-- Page Header-->
+  <header
+    class="masthead"
+    style="background-image: url('/assets/img/{{ bannerImage }}')"
+  >
+    <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="site-heading">
+            {% if isPost %}
+              <h1>{{ blogPost.title }}</h1>
+              <h2 class="subheading">{{ blogPost.teaser }}</h2>
+              <span class="meta">
+                Posted by
+                <a href="#!">{{ blogPost.author }}</a>
+                on {{ blogPost.formattedDate }}
+              </span>
+            {% else %}
+              <h1>{{ pageTitle }}</h1>
+              <span class="subheading">{{ subheading }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+{% endmacro %}

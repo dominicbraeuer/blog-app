@@ -1,0 +1,35 @@
+{% macro inputField(id, type="text", label="", placeholder="", validations="", feedback={}) %}
+  {% if type == "textarea" %}
+    <div class="form-floating">
+      <textarea
+        class="form-control"
+        id="{{ id }}"
+        placeholder="{{ placeholder }}"
+        style="height: 12rem"
+        data-sb-validations="{{ validations }}"
+      ></textarea>
+      <label for="{{ id }}">{{ label }}</label>
+      {% for rule, message in feedback %}
+        <div class="invalid-feedback" data-sb-feedback="{{ id }}:{{ rule }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="form-floating">
+      <input
+        class="form-control"
+        id="{{ id }}"
+        type="{{ type }}"
+        placeholder="{{ placeholder }}"
+        data-sb-validations="{{ validations }}"
+      />
+      <label for="{{ id }}">{{ label }}</label>
+      {% for rule, message in feedback %}
+        <div class="invalid-feedback" data-sb-feedback="{{ id }}:{{ rule }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endmacro %}

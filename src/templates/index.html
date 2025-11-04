@@ -1,0 +1,29 @@
+{% extends "_baseLayout.html" %}
+{% set bannerImage = "home-bg.jpg" %}
+{% set pageTitle = "Clean Blog" %}
+{% set subheading = "A Blog Theme by Start Bootstrap" %}
+{% set isPost = false %}
+{% block main %}
+  {% for post in blogPosts %}
+    <!-- Post preview-->
+    <div class="post-preview">
+      <a href="post/{{ post.slug }}">
+        <h2 class="post-title">{{ post.title }}</h2>
+        <h3 class="post-subtitle">{{ post.teaser }}</h3>
+      </a>
+      <p class="post-meta">
+        Posted by
+        <a href="#!">{{ post.author }}</a>
+        on {{ post.formattedDate }}
+      </p>
+    </div>
+    <!-- Divider-->
+    <hr class="my-4" />
+  {% else %}
+    <p>No blog posts available.</p>
+  {% endfor %}
+  <!-- Pager-->
+  <div class="d-flex justify-content-end mb-4">
+    <a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a>
+  </div>
+{% endblock %}
